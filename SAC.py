@@ -1,3 +1,5 @@
+import wrappers as wp
+
 import custom_critic_network
 import tensorflow as tf
 import numpy as np
@@ -13,12 +15,6 @@ from tf_agents.drivers import dynamic_step_driver
 from tf_agents.metrics import tf_metrics
 from tf_agents.policies import policy_saver
 from tf_agents.utils import common
-
-import sys
-
-sys.path.insert(1, '/home/share/')
-
-import wrappers as wp
 
 class SAC():
   def __init__(self, env_name, horizon, batch_size, buffer_size,
@@ -66,10 +62,11 @@ class SAC():
     self.setup()
 
   def setup(self):
-    self.train_env = tf_py_environment.TFPyEnvironment(self.create_env(wp.RewardRoute))
-    self.eval_env = tf_py_environment.TFPyEnvironment(self.create_env(wp.ObsNormalizer))
+    self.train_env = tf_py_environment.TFPyEnvironment(self.create_env_train())
+    self.eval_env = tf_py_environment.TFPyEnvironment(self.create_env())
 
     self.observation_spec = self.train_env.observation_spec()
+    print('obs:',self.observation_spec)
     self.action_spec = self.train_env.action_spec()
 
     self.nature_cnn = self.pre_processing_natureCnn()
@@ -153,8 +150,11 @@ class SAC():
                                                           batch_size=self.train_env.batch_size,
                                                           max_length=self.buffer_size)
   
-  def create_env(self, wrapper):
-    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wrapper,))
+  def create_env(self):
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsNormalizer,))
+
+  def create_env_train(self):
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsNormalizer, wp.RewardRoute,))
 
   def define_metrics(self):
     step_metrics = [tf_metrics.NumberOfEpisodes(),
@@ -234,12 +234,14 @@ class SAC():
 
         step = self.tf_agent.train_step_counter.numpy()
 
-        if((step % 100000) == 0):
-          train_checkpointer.save(self.global_step)
-          saver_policy.save(policy_dir)
+        #if((step % 100000) == 0):
+        #  train_checkpointer.save(self.global_step)
+        #  saver_policy.save(policy_dir)
 
         if(step % self.summary_interval == 0):
           tf.summary.scalar('Average Reward', self.compute_avg_return(self.num_eval_episodes), step=self.global_step)
+          train_checkpointer.save(self.global_step)
+          saver_policy.save(policy_dir)
           #avg_return = self.compute_avg_return(self.num_eval_episodes)
           #print('step = {0}: Average Return = {1}'.format(step, avg_return))
           #policy_saver.save(policy_dir)

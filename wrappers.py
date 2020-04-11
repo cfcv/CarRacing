@@ -10,26 +10,20 @@ class ObsNormalizer(gym.ObservationWrapper):
     def __init__(self, env):
         super(ObsNormalizer, self).__init__(env)
         self.observation_space = gym.spaces.Box(
-            0.0, 1.0, [96, 96, 3], dtype=np.float32
+            0.0, 1.0, [84, 96, 1], dtype=np.float32
         )
         self.env.verbose = 0
 
     def observation(self, obs):
-        return obs/255.0
+        obs_gray = np.dot(obs[:84,:,:], [0.2989, 0.5870, 0.1140])
+        return np.reshape(obs_gray/255.0, (84,96,1))  
 
 class RewardRoute(gym.Wrapper):
 
     def __init__(self, env):
         super(RewardRoute, self).__init__(env)
-        self.observation_space = gym.spaces.Box(
-            0.0, 1.0, [96, 96, 3], dtype=np.float32
-        )
-        print('--- ini ---')
         self.env.verbose = 0
 
-    def observation(self, obs):
-        return obs/255.0 
-    
     def on_segment(self, p, q, r):
         if((q[0] <= max(p[0], r[0])) and (q[0] >= min(p[0], r[0])) and (q[1] <= max(p[1], r[1])) and (q[1] >= min(p[1], r[1]))):
             return True
@@ -100,5 +94,4 @@ class RewardRoute(gym.Wrapper):
     
     def step(self, action):
         state, step_reward, done, _ = self.env.step(action)
-
         return state, step_reward, done, {}
