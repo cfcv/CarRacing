@@ -28,7 +28,8 @@ class SAC():
     self.eval_env = None
     self.observation_spec = None
     self.action_spec = None
-
+    
+    self.return_avg = 0.0
     self.critic_lr = critic_lr
     self.actor_lr = actor_lr
     self.alpha_lr = alpha_lr
@@ -68,6 +69,7 @@ class SAC():
     self.observation_spec = self.train_env.observation_spec()
     print('obs:',self.observation_spec)
     self.action_spec = self.train_env.action_spec()
+    print('action:', self.action_spec)
 
     self.nature_cnn = self.pre_processing_natureCnn()
     self.critic_net = self.critic(self.nature_cnn)
@@ -151,10 +153,10 @@ class SAC():
                                                           max_length=self.buffer_size)
   
   def create_env(self):
-    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsNormalizer,))
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip,))
 
   def create_env_train(self):
-    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsNormalizer, wp.RewardRoute,))
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip,))
 
   def define_metrics(self):
     step_metrics = [tf_metrics.NumberOfEpisodes(),
@@ -197,6 +199,7 @@ class SAC():
     eval_dir = os.path.join(root_dir, 'eval')
     checkpoint_dir = os.path.join(root_dir, 'checkpoint')
     policy_dir = os.path.join(root_dir, 'policy')
+    best_policy_dir = os.path.join(root_dir, 'best_policy')
 
     saver_policy = policy_saver.PolicySaver(self.tf_agent.policy)
     train_checkpointer = common.Checkpointer(ckpt_dir=checkpoint_dir,
@@ -234,14 +237,17 @@ class SAC():
 
         step = self.tf_agent.train_step_counter.numpy()
 
-        #if((step % 100000) == 0):
-        #  train_checkpointer.save(self.global_step)
-        #  saver_policy.save(policy_dir)
-
-        if(step % self.summary_interval == 0):
-          tf.summary.scalar('Average Reward', self.compute_avg_return(self.num_eval_episodes), step=self.global_step)
+        if((step % 100000) == 0):
           train_checkpointer.save(self.global_step)
           saver_policy.save(policy_dir)
+
+        if(step % self.summary_interval == 0):
+          avg = self.compute_avg_return(self.num_eval_episodes)
+          tf.summary.scalar('Average Reward', avg, step=self.global_step)
+
+          if(avg > self.return_avg):
+            saver_policy.save(best_policy_dir)
+            self.return_avg = avg
           #avg_return = self.compute_avg_return(self.num_eval_episodes)
           #print('step = {0}: Average Return = {1}'.format(step, avg_return))
           #policy_saver.save(policy_dir)
