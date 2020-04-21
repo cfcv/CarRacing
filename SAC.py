@@ -153,10 +153,10 @@ class SAC():
                                                           max_length=self.buffer_size)
   
   def create_env(self):
-    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip, wp.RescaleAction,))
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip, wp.FrameStack,))
 
   def create_env_train(self):
-    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip, wp.RescaleAction,))
+    return suite_gym.load(self.env_name, max_episode_steps=self.horizon, gym_env_wrappers=(wp.ObsGrayNormalizer, wp.StartSkip, wp.FrameStack,))
 
   def define_metrics(self):
     step_metrics = [tf_metrics.NumberOfEpisodes(),
