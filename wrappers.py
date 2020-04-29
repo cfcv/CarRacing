@@ -62,7 +62,7 @@ class RescaleAction(gym.ActionWrapper):
         break_ = 0
         
         if(action[1] < 0):
-            break_ = action[1]
+            break_ = abs(action[1])
         else:
             gas = action[1]
 
