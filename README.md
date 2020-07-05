@@ -6,7 +6,7 @@ This project aims to use Deep Reinforcement Learning to solve the CarRacing Open
 ### Clipped Action space and Entropy coefficient
 
 ### Table of results
-
+Here the results were averaged in 5 different random seeds
 ### Improvements
 
 * ERE or PRE + ERE(Emphasizing recent experience)
