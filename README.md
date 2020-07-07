@@ -1,6 +1,8 @@
 # CarRacing
 This project aims to use Deep Reinforcement Learning to solve the CarRacing OpenAI gym environment. Click in the image below to chekc out the video.
 
+### Network architecture
+
 ### Modifications in the Observation state
 
 ### Clipped Action space and Entropy coefficient
