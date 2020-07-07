@@ -7,7 +7,7 @@ The actor and critic networks have similar architecture, they only differ in the
 <p align="center">
 <img src="https://github.com/cfcv/CarRacing/blob/master/images/network_architecture.png">
 </p>
-<br/>
+
 ### Modifications in the Observation state
 
 ### Clipped Action space and Entropy coefficient
