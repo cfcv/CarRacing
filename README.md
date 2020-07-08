@@ -14,6 +14,15 @@ The actor and critic networks have similar architecture, they only differ in the
 
 ### Table of results
 Here the results were averaged in 5 different random seeds
+
+Agent | Avg. Return | Best Avg. Return
+------------ | ------------- | ------------- 
+SAC | 0.0 | 0.0
+SAC + gray | 0.0 | 0.0
+SAC + gray + action 0.0 | 0.0
+SAC + gray + action + Frame stack | 0.0 | 0.0
+SAC + gray + action + Odometrie | 0.0 | 0.0
+
 ### Improvements
 
 * ERE or PRE + ERE(Emphasizing recent experience)
