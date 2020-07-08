@@ -26,6 +26,8 @@ for i in range(N):
 
 final_average /= N
 ```
+This average return is computed using the last agent checkpoint(in the final iteration step) and also in the best checkpoint anywere in the learning process, these two metrics are represented in the table below as avg. Return and Best Avg. Return respectively.
+
 Agent | Avg. Return | Best Avg. Return
 ------------ | ------------- | ------------- 
 SAC | 0.0 | 0.0
