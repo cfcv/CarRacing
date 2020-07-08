@@ -13,13 +13,24 @@ The actor and critic networks have similar architecture, they only differ in the
 ### Clipped Action space and Entropy coefficient
 
 ### Table of results
-Here the results were averaged in 5 different random seeds
+For each approach, 5 agents with 5 different random seeds were trained and it's performance averaged.
+The average return is computed by averaging the return(sum of reward within an episode) over N episodes, in this case N = 100. 
+When we have the average return of each one of the 5 different seed agents we can compute the final average return as follows:
+```
+final_average = 0
+N = number of seeds
+avg_return = list containing the average return of each agent trained. It has N elements. 
 
+for i in range(N):
+  final_average += avg_return[i]
+
+final_average /= N
+```
 Agent | Avg. Return | Best Avg. Return
 ------------ | ------------- | ------------- 
 SAC | 0.0 | 0.0
 SAC + gray | 0.0 | 0.0
-SAC + gray + action 0.0 | 0.0
+SAC + gray + action | 0.0 | 0.0
 SAC + gray + action + Frame stack | 0.0 | 0.0
 SAC + gray + action + Odometrie | 0.0 | 0.0
 
