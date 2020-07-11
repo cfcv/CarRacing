@@ -8,7 +8,8 @@ The actor and critic networks have similar architecture, they only differ in the
 <img src="https://github.com/cfcv/CarRacing/blob/master/images/network_architecture.png">
 </p>
 
-### Modifications in the Observation state
+### Modifications in the Observation and action state
+1. Gray observation: Originally the environment provides a 96x96x3 RGB image, with the gray observation wrapper the observation becomes a 84x84 grayscale iamge. In that way we can store more transitions in the replay buffer. 
 
 ### Clipped Action space and Entropy coefficient
 
