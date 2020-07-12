@@ -11,6 +11,8 @@ The actor and critic networks have similar architecture, they only differ in the
 ### Modifications in the Observation and action state
 1. Gray observation: Originally the environment provides a 96x96x3 RGB image, with the gray observation wrapper the observation becomes a 84x84 grayscale iamge. In that way we can store more transitions in the replay buffer. 
 
+1. Frame Stack: As the environment only provide a color image, the agent is not aware of it's velocity. Know the current velocity is important to estimate if we need to accelerato or brake in order to successifully complete curves. In the frame Stack wrapper the last 4 observations images are stacked so we can have implicitly the velocity information.
+
 ### Clipped Action space and Entropy coefficient
 
 ### Table of results
