@@ -13,6 +13,8 @@ The actor and critic networks have similar architecture, they only differ in the
 
 1. Frame Stack: As the environment only provide a color image, the agent is not aware of it's velocity. Know the current velocity is important to estimate if we need to accelerato or brake in order to successifully complete curves. In the frame Stack wrapper the last 4 observations images are stacked so we can have implicitly the velocity information.
 
+1. Action: By default, we can our action is a vector of 3 positions [steer, gas, brake], but in this formulation we provide the agent the possibility to accelerate and brake at the same time. As we don't want this, we change the action space to a two position vector [steer, gas or brake], the value of each position of the vector rely on the interval [-1, 1] where for the second position of the vector, negative values means brake and positive values means acceleration.
+
 ### Clipped Action space and Entropy coefficient
 
 ### Table of results
