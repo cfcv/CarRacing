@@ -41,7 +41,7 @@ SAC + gray + action | 0.0 | 0.0
 SAC + gray + action + Frame stack | 0.0 | 0.0
 SAC + gray + action + Odometrie | 0.0 | 0.0
 
-### Improvements
+### Possible Improvements
 
 * Pre-train a perception encoding representation using autoencoders and then freeze this part of the network during RL training.
 * ERE or PRE + ERE(Emphasizing recent experience)
