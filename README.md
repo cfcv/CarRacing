@@ -36,7 +36,7 @@ This average return is computed using the last agent checkpoint(in the final ite
 Agent | Avg. Return | Best Avg. Return
 ------------ | ------------- | ------------- 
 SAC | 278.05 +- 139.276 | 522.188 +- 103.738
-SAC + gray | 0.0 | 0.0
+SAC + gray | 125.1 +- 82.56 | 359.458 +- 205.10
 SAC + gray + action | 0.0 | 0.0
 SAC + gray + action + Frame stack | 0.0 | 0.0
 SAC + gray + action + Odometrie | 0.0 | 0.0
