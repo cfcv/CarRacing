@@ -41,9 +41,6 @@ SAC + gray + action | -61.045 +- 15.579 | -18.09 +- 89.224
 SAC + gray + action + Frame stack | -53.664 +- 16.497 | -6.169 +- 56.072
 SAC + gray + action + Odometrie | 0.0 | 0.0
 
-frame stack 
--53.664,272.1633,16.497372
--6.169409,3144.1746,56.07294
 ### Possible Improvements
 
 * Pre-train a perception encoding representation using autoencoders and then freeze this part of the network during RL training.
