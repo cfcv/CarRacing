@@ -15,7 +15,7 @@ The actor and critic networks have similar architecture, they only differ in the
 
 1. Action: By default, we can our action is a vector of 3 positions [steer, gas, brake], but in this formulation we provide the agent the possibility to accelerate and brake at the same time. As we don't want this, we change the action space to a two position vector [steer, gas or brake], the value of each position of the vector rely on the interval [-1, 1] where for the second position of the vector, negative values means brake and positive values means acceleration.
 
-1. Odometry: With this modification, the current velocity is given explicitly to the agent. A branch with an fully connected layers receives as input the current steer, throttle and velocity. The output of this branch is concatenated with the output feature vector of the CNN. 
+1. Odometry: With this modification, the current velocity is given explicitly to the agent. A branch with an fully connected layers receives as input the current steer, throttle and velocity. The output of this branch is concatenated with the output feature vector of the CNN. b
 
 ### Clipped Action space and Entropy coefficient
 
