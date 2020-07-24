@@ -41,7 +41,7 @@ SAC | 278.05 +- 139.276 | 522.188 +- 103.738
 SAC + gray | 125.1 +- 82.56 | 359.458 +- 205.10
 SAC + gray + action | -61.045 +- 15.579 | -18.09 +- 89.224
 SAC + gray + action + Frame stack | -53.664 +- 16.497 | -6.169 +- 56.072
-SAC + gray + action + Odometrie | 0.0 | 0.0
+SAC + gray + action + Odometrie | 27.752 +- 63.425 | 274.937 +- 326.989
 
 ### Possible Improvements
 
