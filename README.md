@@ -40,7 +40,7 @@ Agent | Avg. Return | Best Avg. Return
 SAC | 268.424 +- 121.24 | 521.669 +- 96.825
 SAC + gray | 127.162 +- 91.758 | 372.406 +- 211.52
 SAC + gray + action | -25.632 +- 9.038 | 3.487 +- 45.049
-SAC + gray + action + Frame stack |-43.479 +- 13.61 | -4.823 +- 49.878
+SAC + gray + action + Frame stack | -46.216 +- 11.105 | -6.262 +- 48.90
 SAC + gray + action + Odometrie | 27.752 +- 63.425 | 274.937 +- 326.989
 
 ### Possible Improvements
