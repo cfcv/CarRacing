@@ -50,4 +50,4 @@ SAC + gray + action + Odometrie | 27.752 +- 63.425 | 274.937 +- 326.989
 * Pre-train a perception encoding representation using autoencoders and then freeze this part of the network during RL training.
 * ERE or PRE + ERE(Emphasizing recent experience)
 * RNN
-* SLAC(Soft Latent Actor Critic)
+* SLAC(Soft Latent Actor Critic )
