@@ -44,6 +44,8 @@ SAC + gray + action + Frame stack | -46.216 +- 11.105 | -6.262 +- 48.90
 SAC + gray + action + Frame stack + clip | 246.918 +-67.036 | 440.936 +- 113.017
 SAC + gray + action + Frame stack + clip + alpha | 56.599 +- 131.628 | 134.662 +-110.444 
 SAC + gray + action + Odometrie | 27.752 +- 63.425 | 274.937 +- 326.989
+SAC + gray + action + Odometrie + clip| 27.752 +- 63.425 | 274.937 +- 326.989
+SAC + gray + action + Odometrie + clip + alpha | 27.752 +- 63.425 | 274.937 +- 326.989
 
 ### Possible Improvements
 
