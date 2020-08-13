@@ -43,13 +43,13 @@ SAC + gray + action | -25.632 +- 9.038 | 3.487 +- 45.049
 SAC + gray + action + Frame stack | -46.216 +- 11.105 | -6.262 +- 48.90
 SAC + gray + action + Frame stack + clip | 246.918 +-67.036 | 440.936 +- 113.017
 SAC + gray + action + Frame stack + clip + alpha | 56.599 +- 131.628 | 134.662 +-110.444 
-SAC + gray + action + Odometrie | 27.752 +- 63.425 | 274.937 +- 326.989
-SAC + gray + action + Odometrie + clip| 726.04 +- 40.67 | 825.13 +- 10.23
-SAC + gray + action + Odometrie + clip + alpha | 683.10 +- 17.66 | 779.03 +- 22.41
-SAC + gray + action + Odometrie + clip + alpha + img R25 |639.68 +- 51.19 | 804.61 +- 26.58
-SAC + gray + action + Odometrie + clip + alpha + img R65 |659.93 +- 41.32 | 792.24 +- 49.08
-SAC + gray + action + Odometrie + clip + alpha + vec R25 |565.31 +- 41.51 | 804.79 +- 12.18
-SAC + gray + action + Odometrie + clip + alpha + vec R65 |680.26 +- 61.07 | 811.46 +- 36.15
+SAC + gray + action + Odometry | 27.752 +- 63.425 | 274.937 +- 326.989
+SAC + gray + action + Odometry + clip| 726.04 +- 40.67 | 825.13 +- 10.23
+SAC + gray + action + Odometry + clip + alpha | 683.10 +- 17.66 | 779.03 +- 22.41
+SAC + gray + action + Odometry + clip + alpha + img R25 |639.68 +- 51.19 | 804.61 +- 26.58
+SAC + gray + action + Odometry + clip + alpha + img R65 |659.93 +- 41.32 | 792.24 +- 49.08
+SAC + gray + action + Odometry + clip + alpha + vec R25 |565.31 +- 41.51 | 804.79 +- 12.18
+SAC + gray + action + Odometry + clip + alpha + vec R65 |680.26 +- 61.07 | 811.46 +- 36.15
 
 ### Possible Improvements
 
