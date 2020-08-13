@@ -48,8 +48,8 @@ SAC + gray + action + Odometrie + clip| 726.04 +- 40.67 | 825.13 +- 10.23
 SAC + gray + action + Odometrie + clip + alpha | 683.10 +- 17.66 | 779.03 +- 22.41
 SAC + gray + action + Odometrie + clip + alpha + img R25 |639.68 +- 51.19 | 804.61 +- 26.58
 SAC + gray + action + Odometrie + clip + alpha + img R65 |659.93 +- 41.32 | 792.24 +- 49.08
-SAC + gray + action + Odometrie + clip + alpha + vec R25 |  565.31 +- 41.51 | 804.79 +- 12.18
-SAC + gray + action + Odometrie + clip + alpha + vec R65 | |
+SAC + gray + action + Odometrie + clip + alpha + vec R25 |565.31 +- 41.51 | 804.79 +- 12.18
+SAC + gray + action + Odometrie + clip + alpha + vec R65 |680.26 +- 61.07 | 811.46 +- 36.15
 
 ### Possible Improvements
 
