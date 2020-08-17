@@ -39,17 +39,20 @@ print("Founded subfolders:", subfolders)
 average = []
 best_average = []
 
-env_py = suite_gym.load('CarRacing-v0', max_episode_steps=1000, gym_env_wrappers=(wp.ObsGrayNormalizer,))
+env_py = suite_gym.load('CarRacing-v0', max_episode_steps=1000, gym_env_wrappers=(wp.render_wrapper, wp.ObsGrayNormalizer, wp.StartSkip, wp.RescaleAction_clip, wp.MultInput_waypointVec,))
 eval_env = tf_py_environment.TFPyEnvironment(env_py)
 
-for subfolder in tqdm(subfolders):
+for subfolder in subfolders:
     path = args.logdir + subfolder
     
     policy = tf.compat.v2.saved_model.load(path+"/policy")
-    best_policy = tf.compat.v2.saved_model.load(path+"/best_policy")
-    
     avg = compute_avg_return(eval_env, policy, num_episodes=int(args.N))
-    best_avg = compute_avg_return(eval_env, best_policy, num_episodes=int(args.N))
+    try:
+        best_policy = tf.compat.v2.saved_model.load(path+"/best_policy")
+        best_avg = compute_avg_return(eval_env, best_policy, num_episodes=int(args.N))
+    except:
+        best_avg = avg
+    
     
     average.append(avg)
     best_average.append(best_avg)
@@ -72,7 +75,7 @@ print("Best variance:", best_variance)
 print("Best Standard deviation:", best_std)
 print("-------------------------")
 
-f = open("/home/cfcv/Desktop/seed_log/sac_gray/results.txt", "w")
+f = open(args.logdir+"/results.txt", "w")
 f.write(str(mean) + "," + str(variance) + "," + str(std) + "\n")
 f.write(str(best_mean) + "," + str(best_variance) + "," + str(best_std) + "\n")
 
